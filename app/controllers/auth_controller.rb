@@ -2,7 +2,7 @@ class AuthController < ApplicationController
   def login
     @user = User.find_by("LOWER(email) = ?", params[:email].downcase)
 
-    #{ Seguridad: Autenticación segura con bcrypt }
+    # { Seguridad: Autenticación segura con bcrypt }
     if @user&.authenticate(params[:password])
       token = JsonWebToken.encode(user_id: @user.id)
       time = Time.now + 24.hours.to_i

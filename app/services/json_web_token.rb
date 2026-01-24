@@ -18,4 +18,4 @@ class JsonWebToken
     # Manejo de errores de decodificación
     raise StandardError, "Token inválido: #{e.message}"
   end
-end  
+end

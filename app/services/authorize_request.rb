@@ -28,13 +28,13 @@ class AuthorizeRequest
   # extract token from header
   def http_auth_header
     # Esperamos el formato: "Authorization: Bearer <token>"
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
+    if headers["Authorization"].present?
+      return headers["Authorization"].split(" ").last
     end
-    raise(ExceptionHandler::MissingToken, 'Missing token')
+    raise(ExceptionHandler::MissingToken, "Missing token")
   end
 
   def handle_user_not_found
-    raise(ExceptionHandler::InvalidToken, 'Invalid token')
+    raise(ExceptionHandler::InvalidToken, "Invalid token")
   end
 end

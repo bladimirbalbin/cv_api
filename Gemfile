@@ -42,7 +42,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Pruebas automatizadas (Rspec es más preferido por empresas senior que Minitest)
-  gem 'rspec-rails'  
+  gem "rspec-rails"
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
 
