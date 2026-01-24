@@ -1,19 +1,20 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: cv_api_development
-  # Aquí solo usamos credenciales en tu PC
   username: postgres
+  # ESTO SOLO SE USA EN TU PC LOCAL
   password: <%= Rails.application.credentials.database[:password] %>
 
 test:
   <<: *default
   database: cv_api_test
-  # AQUÍ NO PONEMOS PASSWORD. CI se encarga de conectar automáticamente.
+  # AQUÍ NO HAY CONTRASEÑA. GitHub se encarga de conectar automáticamente.
 
 production:
   <<: *default
