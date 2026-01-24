@@ -1,11 +1,12 @@
 class ProjectsController < ApplicationController
+  # 1. Proteger TODA la lógica con autenticación
   before_action :authorize_request
+  # 2. Buscar el proyecto específico SOLO si pertenece al usuario actual
   before_action :set_project, only: %i[ show update destroy ]
 
-  # GET /projects
+  # GET /projects (Devuelve SOLO mis proyectos)
   def index
     @projects = current_user.projects
-
     render json: @projects
   end
 
@@ -14,8 +15,9 @@ class ProjectsController < ApplicationController
     render json: @project
   end
 
-  # POST /projects
+  # POST /projects (Crea un proyecto asociado a MI usuario)
   def create
+    # Asociamos el proyecto al usuario actual
     @project = current_user.projects.build(project_params)
 
     if @project.save
@@ -47,6 +49,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:title, :description, :url, :user_id) # user_id lo ignoraremos en create por seguridad
+      params.require(:project).permit(:title, :description, :url, :user_id)
     end
 end
