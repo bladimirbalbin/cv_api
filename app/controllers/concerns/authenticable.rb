@@ -26,12 +26,15 @@ module Authenticable
     else
       # Caso 3: Token inválido o expirado (Unauthorized)
       render json: { error: "Unauthorized: Invalid or expired token" }, status: :unauthorized
-      nil
+      return
     end
 
   rescue JWT::DecodeError
     # Caso 4: El token tiene formato basura (Bad Request)
     render json: { error: "Bad Request: Malformed token" }, status: :bad_request
-    nil
+    return
+  end
+  def current_user
+    @current_user
   end
 end
