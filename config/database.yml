@@ -1,23 +1,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  # NOTA: Quitamos el usuario aquí para dejar que DATABASE_URL (de GitHub) mande, 
-  # o usamos uno genérico para local.
-  username: postgres 
-  
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: cv_api_development
-  # SOLO development usa credenciales
+  # Aquí solo usamos credenciales en tu PC
+  username: postgres
   password: <%= Rails.application.credentials.database[:password] %>
 
 test:
   <<: *default
   database: cv_api_test
-  # NO usamos credenciales en test. CI usará la URL que le pasamos en el YAML.
-  # Para local, esto funcionará porque Postgres en localhost a veces acepta 'trust' o si no,
-  # Rails usará la URL si la definimos o simplemente fallará si necesitamos pass.
-  # Pero para este CV, dejamos que CI maneje todo con DATABASE_URL.
+  # AQUÍ NO PONEMOS PASSWORD. CI se encarga de conectar automáticamente.
+
+production:
+  <<: *default
+  database: cv_api_production
+  username: cv_api
+  password: <%= ENV["CV_API_DATABASE_PASSWORD"] %>
