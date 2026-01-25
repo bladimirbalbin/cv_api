@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Ruta de Login (Solo POST es necesario en una API)
+  post "/auth/register", to: "auth#register"
   post "/auth/login", to: "auth#login"
 
   # Rutas protegidas

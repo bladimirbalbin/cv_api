@@ -4,6 +4,56 @@ info:
   title: CV API
   version: v1
 paths:
+  "/auth/register":
+    post:
+      summary: register
+      tags:
+      - Authentication
+      description: Create a new user account
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      example: reclutador@empresa.com
+                    password:
+                      type: string
+                      example: MiContraseñaSegura123
+                  required:
+                  - email
+                  - password
+              required:
+              - user
   "/auth/login":
     post:
       summary: login

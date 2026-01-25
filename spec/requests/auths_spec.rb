@@ -1,6 +1,48 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/auth', type: :request do
+  path '/auth/register' do
+    post('register') do
+      tags 'Authentication'
+      description 'Create a new user account'
+      consumes 'application/json'
+      produces 'application/json'
+
+      parameter name: :user, in: :body, schema: {
+        type: :object,
+        properties: {
+          user: {
+            type: :object,
+            properties: {
+              email: { type: :string, example: 'reclutador@empresa.com' },
+              password: { type: :string, example: 'MiContraseñaSegura123' }
+            },
+            required: [ 'email', 'password' ]
+          }
+        },
+        required: [ 'user' ]
+      }
+
+      response(201, 'created') do
+        schema type: :object,
+          properties: {
+            id: { type: :integer },
+            email: { type: :string }
+          }
+
+        run_test!
+      end
+
+      response(422, 'unprocessable entity') do
+        schema type: :object,
+          properties: {
+            errors: { type: :array, items: { type: :string } }
+          }
+
+        run_test!
+      end
+    end
+  end
   path '/auth/login' do
     post('login') do
       tags 'Authentication'
