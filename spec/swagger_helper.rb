@@ -23,7 +23,7 @@ config.openapi_specs = {
     },
     paths: {},
     components: { securitySchemes: { bearer_auth: { type: :http, scheme: :bearer, bearerFormat: 'JWT' } } },
-    
+
     # Agregamos Local y Producción
     servers: [
       {
