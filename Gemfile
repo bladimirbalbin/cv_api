@@ -34,6 +34,8 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
+# Generacion de documentacion API estilo Swagger
+gem "rswag"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
@@ -42,9 +44,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Pruebas automatizadas (Rspec es más preferido por empresas senior que Minitest)
-  gem "rspec-rails", "~> 6.0"
-  # Generacion de documentacion API estilo Swagger
-  gem "rswag"
+  gem "rspec-rails", "~> 6.0"  
   #  Helpers para crear datos de prueba
   gem "factory_bot_rails"
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
