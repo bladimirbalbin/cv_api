@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.configure do |config|
-  config.openapi_root = Rails.root.join("swagger").to_s
+  config.openapi_root = Rails.root.join("public/swagger").to_s
 
   servers =
     if Rails.env.production?
