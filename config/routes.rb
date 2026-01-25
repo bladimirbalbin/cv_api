@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Rutas protegidas
   resources :skills, only: [ :index, :show, :create, :update, :destroy ]
-  resources :projects, only: [ :index, :show, :create, :update, :destroy ]
+  resources :cv_projects, only: [ :index, :show, :create, :update, :destroy ]
 
   resources :users, only: [], param: :email do
     get :profile, on: :collection

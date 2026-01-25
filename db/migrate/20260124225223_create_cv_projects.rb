@@ -1,6 +1,6 @@
-class CreateProjects < ActiveRecord::Migration[8.1]
+class CreateCvProjects < ActiveRecord::Migration[8.1]
   def change
-    create_table :projects do |t|
+    create_table :cv_projects do |t|
       t.string :title
       t.text :description
       t.string :url
