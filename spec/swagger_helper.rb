@@ -14,10 +14,8 @@ RSpec.configure do |config|
 # By default, the operations defined in spec files are added to the first
 # document below. You can override this behavior by adding a openapi_spec tag to the
 # the root example_group in your specs, e.g. describe '...', openapi_spec: 'v2/swagger.json'
-config.swagger_docs = {
-  'swagger.yaml' => {
-    # Si tu llave arriba es otra (ej: 'v1/swagger.yaml'), déjala como está,
-    # pero asegúrate de agregar los "servers" abajo.
+config.openapi_specs = {
+  'swagger/v1/swagger.yaml' => {
     openapi: '3.0.0',
     info: {
       title: 'CV API',
@@ -25,12 +23,16 @@ config.swagger_docs = {
     },
     paths: {},
     components: { securitySchemes: { bearer_auth: { type: :http, scheme: :bearer, bearerFormat: 'JWT' } } },
-
-    # AGREGA ESTO AQUÍ 👇 (Esto añade el selector de servidor en la UI)
+    
+    # Agregamos Local y Producción
     servers: [
       {
         url: 'http://localhost:3000',
         description: 'Local Development Server'
+      },
+      {
+        url: 'https://cv-api-xpe1.onrender.com',
+        description: 'Production Server (Render)'
       }
     ]
   }
