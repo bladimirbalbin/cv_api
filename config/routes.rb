@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get :profile, on: :collection
   end
   # Redirigir la raíz a la documentación de Swagger
-  root to: redirect('/api-docs')
+  root to: redirect("/api-docs")
   # Documentation Endpoints (Solo se definen UNA vez)
   mount Rswag::Ui::Engine => "/api-docs"
   mount Rswag::Api::Engine => "/api-docs"
