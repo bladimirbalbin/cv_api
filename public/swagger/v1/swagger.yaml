@@ -42,12 +42,14 @@ paths:
               required:
               - email
               - password
+servers:
+- url: http://localhost:3000
+  description: Local Development Server
+- url: https://cv-api-xpe1.onrender.com
+  description: Production Server (Render)
 components:
   securitySchemes:
     bearer_auth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-servers:
-- url: http://localhost:3000
-  description: Local Development Server
