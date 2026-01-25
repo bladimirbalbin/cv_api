@@ -1,0 +1,53 @@
+---
+openapi: 3.0.0
+info:
+  title: CV API
+  version: v1
+paths:
+  "/auth/login":
+    post:
+      summary: login
+      tags:
+      - Authentication
+      description: Authenticates user and returns a JWT token
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  exp:
+                    type: string
+                  username:
+                    type: string
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: test@test.com
+                password:
+                  type: string
+                  example: password123
+              required:
+              - email
+              - password
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+servers:
+- url: http://localhost:3000
+  description: Local Development Server
