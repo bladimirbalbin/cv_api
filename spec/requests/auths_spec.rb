@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/auth', type: :request do
-
   path '/auth/login' do
     post('login') do
       tags 'Authentication'
@@ -14,7 +13,7 @@ RSpec.describe 'api/v1/auth', type: :request do
           email: { type: :string, example: 'test@test.com' },
           password: { type: :string, example: 'password123' }
         },
-        required: ['email', 'password']
+        required: [ 'email', 'password' ]
       }
 
       response(200, 'successful') do
@@ -38,7 +37,7 @@ RSpec.describe 'api/v1/auth', type: :request do
           # No creamos usuario o password incorrecto
           User.create!(email: 'test@test.com', password: 'password123')
         end
-        
+
         run_test!
       end
     end

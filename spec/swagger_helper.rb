@@ -8,12 +8,12 @@ RSpec.configure do |config|
   # to ensure that it's configured to serve Swagger from the same folder
   config.openapi_root = Rails.root.join('swagger').to_s
 
-  # Define one or more Swagger documents and provide global metadata for each one
-  # When you run the 'rswag:specs:swaggerize' rake task, the complete Swagger will
-  # be generated at the provided relative path under openapi_root
-  # By default, the operations defined in spec files are added to the first
-  # document below. You can override this behavior by adding a openapi_spec tag to the
-  # the root example_group in your specs, e.g. describe '...', openapi_spec: 'v2/swagger.json'
+# Define one or more Swagger documents and provide global metadata for each one
+# When you run the 'rswag:specs:swaggerize' rake task, the complete Swagger will
+# be generated at the provided relative path under openapi_root
+# By default, the operations defined in spec files are added to the first
+# document below. You can override this behavior by adding a openapi_spec tag to the
+# the root example_group in your specs, e.g. describe '...', openapi_spec: 'v2/swagger.json'
 config.swagger_docs = {
   'swagger.yaml' => {
     # Si tu llave arriba es otra (ej: 'v1/swagger.yaml'), déjala como está,
@@ -25,7 +25,7 @@ config.swagger_docs = {
     },
     paths: {},
     components: { securitySchemes: { bearer_auth: { type: :http, scheme: :bearer, bearerFormat: 'JWT' } } },
-    
+
     # AGREGA ESTO AQUÍ 👇 (Esto añade el selector de servidor en la UI)
     servers: [
       {
