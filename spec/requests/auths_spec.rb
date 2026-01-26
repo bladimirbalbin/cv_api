@@ -14,8 +14,8 @@ RSpec.describe 'api/v1/auth', type: :request do
           user: {
             type: :object,
             properties: {
-              email: { type: :string, example: 'reclutador@empresa.com' },
-              password: { type: :string, example: 'MiContraseñaSegura123' }
+              email: { type: :string, example: 'recruiter@test.com' },
+              password: { type: :string, example: 'password123' }
             },
             required: [ 'email', 'password' ]
           }
@@ -52,7 +52,7 @@ RSpec.describe 'api/v1/auth', type: :request do
       parameter name: :credentials, in: :body, schema: {
         type: :object,
         properties: {
-          email: { type: :string, example: 'test@test.com' },
+          email: { type: :string, example: 'recruiter@test.com' },
           password: { type: :string, example: 'password123' }
         },
         required: [ 'email', 'password' ]
