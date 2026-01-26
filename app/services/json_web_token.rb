@@ -1,6 +1,6 @@
 class JsonWebToken
   # Configuramos la secreta leyendola de las credenciales encriptadas
-  SECRET_KEY = Rails.application.credentials.jwt[:secret]
+  SECRET_KEY = ENV['JWT_SECRET'] || Rails.application.credentials.jwt[:secret]
 
   def self.encode(payload, exp = 24.hours.from_now)
     # Agregamos la expiración al payload
