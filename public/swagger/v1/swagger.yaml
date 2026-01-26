@@ -117,10 +117,10 @@ paths:
         '401':
           description: unauthorized
 servers:
-- url: http://localhost:3000
-  description: Local Development Server
 - url: https://cv-api-xpe1.onrender.com
   description: Production Server (Render)
+- url: http://localhost:3000
+  description: Local Development Server
 components:
   securitySchemes:
     bearer_auth:
