@@ -17,7 +17,12 @@ module CvApi
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
+
+
     puts "RAILS_ENV ACTUAL: #{Rails.env}"
+
+    puts "DATABASE_URL REAL:"
+    puts ENV["DATABASE_URL"]
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
