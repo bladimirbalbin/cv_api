@@ -18,7 +18,7 @@ module CvApi
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-
+    config.action_cable.mount_path = nil
     puts "RAILS_ENV ACTUAL: #{Rails.env}"
 
     puts "DATABASE_URL REAL:"
